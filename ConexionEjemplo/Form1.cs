@@ -148,13 +148,17 @@ namespace ConexionEjemplo
 
         }
 
+        // Evento que se ejecuta cuando se presiona el botón "Modificar"
         private void btModificar_Click(object sender, EventArgs e)
         {
+            // Crea un objeto cliente con los nuevos datos ingresados en la interfaz
             var actualizarCliente = ObtenerNuevoCliente();
+            // Actualiza el cliente en la base de datos y muestra un mensaje con el número de filas actualizadas
             int actualizadas = customerRepository.ActualizarCliente(actualizarCliente);
             MessageBox.Show($"Filas actualizadas = {actualizadas}");
         }
 
+        // Método para crear un nuevo objeto cliente basado en los datos ingresados en la interfaz
         private Customers ObtenerNuevoCliente() {
 
             var nuevoCliente = new Customers
@@ -169,11 +173,17 @@ namespace ConexionEjemplo
 
             return nuevoCliente;
         }
-
+        // Evento que se ejecuta cuando se presiona el botón "Eliminar"
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-           int elimindas = customerRepository.EliminarCliente(tboxCustomerID.Text);
+            // Elimina un cliente por su ID y muestra un mensaje con el número de filas eliminadas
+            int elimindas = customerRepository.EliminarCliente(tboxCustomerID.Text);
             MessageBox.Show("Filas eliminadas = " + elimindas);
+        }
+
+        private void dataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
